@@ -1,0 +1,50 @@
+@import '../variables.scss';
+
+#Menu-Component--Container{
+    margin-bottom: 2em;
+
+    #Menu-Component-SubNav {
+        margin: 0;
+        text-align: center;
+    }
+
+    .selected-menu-item {
+        button.btn.btn-secondary {
+            border-bottom: 0.5em solid $primary-dark;
+            // border-top: 0.5em solid $primary-dark;
+            // background: $secondary;
+            color: $primary-dark;
+            // height: 6.5em;
+            // width: 6.5em;
+            // font-weight: 900;
+            box-shadow: none;
+            transition: width .3s, height .3s, transform .3s;
+            transition-timing-function: ease;
+            border-radius: 0;
+            // padding-bottom: 0;
+
+            svg.MuiSvgIcon-root {
+                fill: $primary-dark;
+            }
+        }
+    }
+    button.btn.btn-secondary {
+        transition: width .3s, height .3s, transform .3s;
+        transition-timing-function: ease;
+        color: $primary-gray;
+        border: none;
+        background: #fff;
+        /*border-radius: 50%;
+        width: 5em;
+        height: 5em;*/
+        // margin-right: 1em;
+        // padding-bottom: 0.5em;
+
+        svg.MuiSvgIcon-root {
+            fill: $primary-gray;
+            height: 1em;
+            width: 1em;
+        }
+    }
+
+}

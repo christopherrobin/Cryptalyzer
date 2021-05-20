@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,900;1,300;1,900&display=swap');
+@import '../src/variables.scss';
+
+* {
+  font-family: 'Roboto', sans-serif;
+  // color: $primary-dark;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, p{
+  color: $primary-dark;
+}
+
+.caption {
+  color: rgb(150, 148, 148);
+  font-size: .9em;
+  margin-top: .5em;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+#pre-loader, #loaded {
+  text-align: center;
+}
+
+#pre-loader {
+  margin-top: 20vh;
+}
+
+#app-container {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+#spinner {
+  width: 5em;
+  height: 5em;
+}
+
+
+#menu {
+  text-align: center;
+  a {
+    display: block;
+    color: white;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  a:hover {
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .selected-menu-item {
+    font-size: 2.5em;
+    font-weight: 700;
+    background-color: #fff;
+    color: rgb(133, 133, 133);
+  }
+  .selected-menu-item:hover { text-decoration: none; }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  #top-banner {
+    h1 {
+      text-align: center;
+    }
+  }
+}
+
+#app-container h1{
+  font-weight: 900;
+}
+
+#Contact-Page--Container {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+#login-card {
+  margin: auto;
+  margin-top: 9vh;
+  padding: 1em;
+  max-width: 800px;
+  h1, h2 {
+    text-align: center;
+  }
+}
+
+#footer{
+  position: absolute;
+  bottom: .8em;
+  font-size: .7em;
+  width: 100%;
+  text-align: center;
+}
+#footer a {
+  font-size: 1em ;
+}
+
+#user-signup-form {
+  padding: 0 5em;
+  margin-top: 1em;
+  input {
+    padding: .7em;
+  }
+  .MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth {
+    margin-bottom: 1em;
+  }
+}
+
+button#confirm-step1{
+  padding-right: .4em;
+}
