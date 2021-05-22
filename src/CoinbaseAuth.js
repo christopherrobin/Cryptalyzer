@@ -8,7 +8,7 @@ const CoinbaseAuth = (props) => {
     const { handleSubmit, coinbaseCode } = props;
     const connectToCoinbase = () => window.location.replace('https://www.coinbase.com/oauth/authorize?client_id=b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1&redirect_uri=https%3A%2F%2Fwww.cryptalyzer.com%2Fhello&response_type=code&scope=wallet%3Auser%3Aread');
 
-useEffect(() => {
+useEffect((coinbaseCode) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -22,7 +22,7 @@ useEffect(() => {
 
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 }, []);
- */
+
   return (
     <div id="user-signup-form">
         <Row>

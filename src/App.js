@@ -4,7 +4,7 @@ import {Helmet} from 'react-helmet';
 import { get } from 'lodash';
 import { Container } from "reactstrap";
 import Signup from './Signup';
-import CoinbaseAuth from './CoinbaseAuth';
+// import CoinbaseAuth from './CoinbaseAuth';
 // import Spinner from './components/Spinner';
 // import Menu from "./components/menu2";
 
