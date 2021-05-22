@@ -12,7 +12,7 @@ useEffect(() => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: `grant_type=authorization_code&code=${coinbaseCode}&client_id=b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1&client_secret=f6d6e442eea4960d0b236644ac474d0e9e7cecc3d984b31268eca1ba9696b027&redirect_uri=https://cryptalyzer.com/oauth/callback`
+        body: `grant_type=authorization_code&code=${coinbaseCode}&client_id=b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1&client_secret=f6d6e442eea4960d0b236644ac474d0e9e7cecc3d984b31268eca1ba9696b027&redirect_uri=https://www.cryptalyzer.com/hello&enablePKCE=false&scopes=["wallet:user:read"]`
     };
     if(coinbaseCode) {
     fetch('https://api.coinbase.com/oauth/token', requestOptions)
@@ -22,7 +22,7 @@ useEffect(() => {
 
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 }, []);
-
+ */
   return (
     <div id="user-signup-form">
         <Row>
