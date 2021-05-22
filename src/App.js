@@ -15,7 +15,6 @@ import queryString from 'query-string';
 
 const App = () => {
   const coinbaseCode = get(queryString.parse(window.location.search), 'code', false);
-  // console.log(`%c${coinbaseCode}`, 'background: #222; color: #bada55; padding: 1em; width: 100%;');
   return (
     <Container id="app-container">
       <Helmet>
