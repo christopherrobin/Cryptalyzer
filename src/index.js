@@ -11,7 +11,10 @@ import theme from './theme';
 
 ReactDOM.render(
   <React.Fragment>
-    <ThemeProvider theme={theme}><CssBaseline /><App /></ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+        <App />
+    </ThemeProvider>
   </React.Fragment>,
   document.getElementById('root')
 );

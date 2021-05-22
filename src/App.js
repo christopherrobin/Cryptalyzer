@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import {Helmet} from 'react-helmet';
+import { get } from 'lodash';
 import { Container } from "reactstrap";
 import Signup from './Signup';
+import CoinbaseAuth from './CoinbaseAuth';
+// import Spinner from './components/Spinner';
 // import Menu from "./components/menu2";
 
 import "./App.scss";
 import './components/Fade.scss';
 
+import queryString from 'query-string';
+
 const App = () => {
-  const [isLoading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
-
-  console.log(isLoading);
-
+  const coinbaseCode = get(queryString.parse(window.location.search), 'code', false);
+  // console.log(`%c${coinbaseCode}`, 'background: #222; color: #bada55; padding: 1em; width: 100%;');
   return (
     <Container id="app-container">
       <Helmet>
@@ -30,7 +29,7 @@ const App = () => {
             </Route>
 
             <Route path="/hello">
-              <Signup />
+              <Signup coinbaseCode={coinbaseCode || false} />
             </Route>
           </Switch>
         </Router>

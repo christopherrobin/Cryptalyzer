@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
+import CoinbaseAuth from './CoinbaseAuth';
 
 import { Card } from '@material-ui/core';
 import CardActions from '@material-ui/core/CardActions';
@@ -14,9 +15,30 @@ import Eth from './media/eth.svg';
 import Fade from "./components/Fade";
 import './components/Fade.scss';
 
-// import './components/Signup.scss';
+import './Signup.scss';
 
-const Signup = () => {
+const Signup = (props) => {
+  const { coinbaseCode } = props;
+  const intialStep = () => coinbaseCode ? 2 : 1;
+  const [step, setStep] = useState(intialStep);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  console.log(coinbaseCode);
+
+  const handleSubmit = (event) => {
+      // event.preventDefault();
+      // This will submit and create user account?
+      console.log(
+        `
+        ${firstName}
+        ${lastName}
+        ${email}
+        `
+      );
+      setStep(step + 1);
+  }
+
   return (
   <Container>
     <Row>
@@ -28,34 +50,38 @@ const Signup = () => {
                 <CardContent>
                   <h1>Cryptalyzer &#128640;</h1>
                   <h2>maximize your moves</h2>
+                  {/**<p>step: {step}</p> */}
                 </CardContent>
                 <CardActions style={{ justifyContent: "center" }}>
                   <Button
                     size="large"
-                    variant="contained"
-                    // color="primary"
                     disableElevation
+                    disabled={step !== 1}
+                    className={step === 1 ? 'active-item' : null}
                   >
                     Enter Details
                   </Button>
-                  <Button size="large" disabled>
+                  <Button disableElevation size="large" disabled={step !== 2} className={step === 2 ? 'active-item' : null}>
                     Sync Coinbase
                   </Button>
-                  <Button size="large" disabled>
+                  <Button disableElevation size="large" disabled={step !== 3} className={step === 3 ? 'active-item' : null}>
                     Cryptalize <sup>&#174;</sup>
                   </Button>
-                  <Button size="large" disabled>
+                  <Button disableElevation size="large" disabled={step !== 4} className={step === 4 ? 'active-item' : null}>
                     Profit
                   </Button>
                 </CardActions>
 
-                <form id="user-signup-form" noValidate autoComplete="off">
+                {
+                  step === 1 ?
+                <form id="user-signup-form" onSubmit={handleSubmit} autoComplete="off">
                   <Row>
                     <Col xs={6}>
                       <TextField
                         id="signup-first"
                         label="First Name"
                         type="text"
+                        onInput={ e=>setFirstName(e.target.value)}
                         fullWidth
                       />
                     </Col>
@@ -64,6 +90,7 @@ const Signup = () => {
                         id="signup-last"
                         label="Last Name"
                         type="text"
+                        onInput={ e=>setLastName(e.target.value)}
                         fullWidth
                       />
                     </Col>
@@ -72,9 +99,10 @@ const Signup = () => {
                     <Col xs={12}>
                       <TextField
                         id="signup-email"
-                        label="Email"
+                        label="Email*"
                         type="email"
                         color="primary"
+                        onInput={ e=>setEmail(e.target.value)}
                         fullWidth
                       />
                     </Col>
@@ -82,6 +110,7 @@ const Signup = () => {
                   <Row>
                     <Col xs={12} style={{ textAlign: "right" }}>
                       <Button
+                        type="submit"
                         variant="contained"
                         color="primary"
                         id="confirm-step1"
@@ -92,6 +121,29 @@ const Signup = () => {
                     </Col>
                   </Row>
                 </form>
+                : null
+                }
+
+
+                {
+                step === 2 ?
+                <Fade childComponent={
+                  <CoinbaseAuth
+                    handleSubmit={handleSubmit}
+                    coinbaseCode={coinbaseCode}
+                  />
+                } />
+                :null
+                }
+
+
+                {
+                  step === 3 ?
+                 'step 3' : null
+                }
+
+
+
 
                 <hr />
                 <div
