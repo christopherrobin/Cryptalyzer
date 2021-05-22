@@ -29,10 +29,12 @@ var requestOptions = {
   redirect: 'follow'
 };
 
+if (coinbaseCode) {
 fetch("https://api.coinbase.com/oauth/token", requestOptions)
   .then(response => response.text())
   .then(result => console.table(result))
   .catch(error => console.log('error', error));
+}
 
 }, []);
 
