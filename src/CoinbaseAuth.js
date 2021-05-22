@@ -31,11 +31,13 @@ const CoinbaseAuth = (props) => {
 
         if (coinbaseCode) {
             fetch("https://api.coinbase.com/oauth/token", requestOptions)
-                .then(response => response.text())
+                .then(response => console.log(response))
                 .then(
                     result => {
-                        console.table(result)
-                        document.cookie = `cryptalyzer-coinbase-token=${result.access_token};cryptalyzer-coinbase-refresh-token=${result.refresh_token}`
+                        console.log(result);
+                        document.cookie = `cryptalyzer-coinbase-token=${result.access_token}`;
+                        // console.log(result.access_token);
+                        // ;cryptalyzer-coinbase-refresh-token=${result.refresh_token}
                     }
                 )
                 .catch(error => console.log('error', error));
