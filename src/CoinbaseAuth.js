@@ -9,7 +9,7 @@ const CoinbaseAuth = (props) => {
     const { handleSubmit, coinbaseCode } = props;
     const connectToCoinbase = () => window.location.replace('https://www.coinbase.com/oauth/authorize?client_id=b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1&redirect_uri=https%3A%2F%2Fwww.cryptalyzer.com%2Fhello&response_type=code&scope=wallet%3Auser%3Aread');
     const userHasCoinbaseCookie = document.cookie.match(/^(.*;)?\s*cryptalyzer-coinbase-refresh-token\s*=\s*[^;]+(.*)?$/)
-    const userHasCode = coinbaseCode;
+    // const userHasCode = coinbaseCode;
 
     useEffect(() => {
 
