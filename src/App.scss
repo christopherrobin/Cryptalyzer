@@ -121,3 +121,11 @@ button#confirm-step1{
 .loader-app, .loader-app-text {
   display: none;
 }
+
+// MD and below
+@media screen and (max-width: 768px) {
+  #user-signup-form {
+    padding: 0 1em;
+    margin-top: 1.8em;
+  }
+}
