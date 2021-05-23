@@ -11,3 +11,12 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textSizeLarge.
     margin-left: 0;
 }
 */
+
+@media screen and (max-width: 768px) {
+    #funnel-menu{
+        span.MuiButton-label {
+            font-size: 0.8em;
+        }
+    }
+}
+

@@ -51,7 +51,7 @@ const Signup = (props) => {
                   <h2>maximize your moves</h2>
                   {/**<p>step: {step}</p> */}
                 </CardContent>
-                <CardActions style={{ justifyContent: "center" }}>
+                <CardActions id="funnel-menu" style={{ justifyContent: "center" }}>
                   <Button
                     size="large"
                     disableElevation
