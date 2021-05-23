@@ -31,15 +31,8 @@ const CoinbaseAuth = (props) => {
 
         if (coinbaseCode) {
             fetch("https://api.coinbase.com/oauth/token", requestOptions)
-                .then(response => console.log(response))
-                .then(
-                    result => {
-                        console.log(result);
-                        document.cookie = `cryptalyzer-coinbase-token=${result.access_token}`;
-                        // console.log(result.access_token);
-                        // ;cryptalyzer-coinbase-refresh-token=${result.refresh_token}
-                    }
-                )
+                .then(response => response.text())
+                .then(result => console.table(result))
                 .catch(error => console.log('error', error));
         }
 
