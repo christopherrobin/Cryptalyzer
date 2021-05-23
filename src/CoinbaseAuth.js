@@ -8,7 +8,8 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 const CoinbaseAuth = (props) => {
     const { handleSubmit, coinbaseCode } = props;
     const connectToCoinbase = () => window.location.replace('https://www.coinbase.com/oauth/authorize?client_id=b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1&redirect_uri=https%3A%2F%2Fwww.cryptalyzer.com%2Fhello&response_type=code&scope=wallet%3Auser%3Aread');
-    const userHasCoinbaseCookie = !document.cookie.match(/^(.*;)?\s*cryptalyzer-coinbase-refresh-token\s*=\s*[^;]+(.*)?$/)
+    const userHasCoinbaseCookie = document.cookie.match(/^(.*;)?\s*cryptalyzer-coinbase-refresh-token\s*=\s*[^;]+(.*)?$/)
+    const userHasCode = coinbaseCode;
 
     useEffect(() => {
 
@@ -59,8 +60,10 @@ const CoinbaseAuth = (props) => {
     <div id="user-signup-form">
         <Row>
             <Col xs={12}>
-                { userHasCoinbaseCookie? <Alert severity="success">You're connected with Coinbase and ready to go!</Alert> : null }
-                <Button disabled={!!coinbaseCode} style={{ margin: '2em 0' }} fullWidth color="primary" disableElevation variant="contained" onClick={() => connectToCoinbase()}>Connect to Coinbase</Button>
+                { userHasCoinbaseCookie ? <Alert severity="success">You're connected with Coinbase and ready to go!</Alert> : null }
+                <Button style={{ margin: '2em 0' }} fullWidth color="primary" disableElevation variant="contained" onClick={() => connectToCoinbase()}>
+                 {userHasCoinbaseCookie ? 'Reconnect Anyway' : 'Connect to Coinbase'}
+                </Button>
             </Col>
         </Row>
         <Row>
@@ -71,7 +74,7 @@ const CoinbaseAuth = (props) => {
                     variant="contained"
                     color="primary"
                     id="confirm-step2"
-                    disabled={!coinbaseCode}
+                    disabled={!userHasCoinbaseCookie}
                     disableElevation
                 >
                     <strong>Next</strong> <NavigateNextIcon />
