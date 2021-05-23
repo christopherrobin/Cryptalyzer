@@ -41,7 +41,8 @@ const CoinbaseAuth = (props) => {
 
                     // Examine the text in the response
                     response.json().then(function(data) {
-                        document.cookie = `cryptalyzer-coinbase-token=${data.access_token};cryptalyzer-coinbase-refresh-token=${data.refresh_token}`
+                        document.cookie = `cryptalyzer-coinbase-token=${data.access_token}`;
+                        document.cookie = `cryptalyzer-coinbase-refresh-token=${data.refresh_token}`;
                     });
                     }
                 )
