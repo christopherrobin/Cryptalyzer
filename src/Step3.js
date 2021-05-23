@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "reactstrap";
 import { getCookie } from './CookieWork';
-import { map } from 'lodash';
 
 const Step3 = (props) => {
 
     const [data, setData] = useState({});
 
     useEffect(() => {
-        // console.log(getCookie('cryptalyzer-coinbase-token'));
-        // console.log(getCookie('cryptalyzer-coinbase-refresh-token'));
         const coinbaseToken = getCookie('cryptalyzer-coinbase-token');
         const authHeader = `Bearer ${coinbaseToken}`;
-        console.log(authHeader);
 
         let myHeaders = new Headers();
         myHeaders.append("Authorization", authHeader);
@@ -39,8 +35,6 @@ const Step3 = (props) => {
             });
 
     }, [])
-
-    console.log(data);
 
     return (
         <div id="user-signup-form">
