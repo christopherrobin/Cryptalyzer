@@ -24,7 +24,6 @@ const Signup = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  console.log(coinbaseCode);
 
   const handleSubmit = (event) => {
       // event.preventDefault();
