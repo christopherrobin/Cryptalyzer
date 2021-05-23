@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { get } from 'lodash';
 import { Row, Col } from "reactstrap";
 import Button from '@material-ui/core/Button';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -42,7 +41,7 @@ const CoinbaseAuth = (props) => {
 
                     // Examine the text in the response
                     response.json().then(function(data) {
-                        console.log(data);
+                        document.cookie = `cryptalyzer-coinbase-token=${data.access_token};cryptalyzer-coinbase-refresh-token=${data.refresh_token}`
                     });
                     }
                 )
