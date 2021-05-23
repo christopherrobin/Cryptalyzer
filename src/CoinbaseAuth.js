@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { get } from 'lodash';
 import { Row, Col } from "reactstrap";
 import Button from '@material-ui/core/Button';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -32,7 +33,7 @@ const CoinbaseAuth = (props) => {
         if (coinbaseCode) {
             fetch("https://api.coinbase.com/oauth/token", requestOptions)
                 .then(response => response.text())
-                .then(result => console.table(result))
+                .then(result => console.log(get(result, 'access_token', false)))
                 .catch(error => console.log('error', error));
         }
 
