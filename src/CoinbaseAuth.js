@@ -32,7 +32,7 @@ const CoinbaseAuth = (props) => {
 
         if (coinbaseCode) {
             fetch("https://api.coinbase.com/oauth/token", requestOptions)
-                .then(response => console.log(response))
+                .then(response => console.log(response.text()))
                 // .then(result => console.log(get(result, 'access_token', false)))
                 .then(result => console.log(result))
                 .catch(error => console.log('error', error));
