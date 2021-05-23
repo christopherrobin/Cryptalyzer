@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import CoinbaseAuth from './CoinbaseAuth';
+import Step3 from './Step3';
+import { getCookie } from './CookieWork';
 
 import { Card } from '@material-ui/core';
 import CardActions from '@material-ui/core/CardActions';
@@ -19,7 +21,19 @@ import './Signup.scss';
 
 const Signup = (props) => {
   const { coinbaseCode } = props;
-  const intialStep = () => coinbaseCode ? 2 : 1;
+
+  const intialStep = () => {
+    let result;
+    if (!coinbaseCode && !getCookie('cryptalyzer-coinbase-token')) {
+      result = 1;
+    } else if (coinbaseCode && !getCookie('cryptalyzer-coinbase-token')){
+      result = 2;
+    } else if (getCookie('cryptalyzer-coinbase-token')){
+      result = 3;
+    }
+    return result;
+  }
+
   const [step, setStep] = useState(intialStep);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -138,7 +152,7 @@ const Signup = (props) => {
 
                 {
                   step === 3 ?
-                 'step 3' : null
+                 <Fade childComponent={<Step3 />} /> : null
                 }
 
 
