@@ -11,6 +11,10 @@ h1, h2, h3, h4, p{
   color: $primary-dark;
 }
 
+.green-text {
+  color: $green;
+}
+
 .caption {
   color: rgb(150, 148, 148);
   font-size: .9em;
@@ -33,6 +37,10 @@ h1 {
   margin: 0;
   padding: 0;
   max-width: 100%;
+
+  h1 {
+    margin-bottom: 0;
+  }
 }
 
 #spinner {

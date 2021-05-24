@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Row, Col } from "reactstrap";
+import { setCookie } from './CookieWork';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -44,8 +45,8 @@ const CoinbaseAuth = (props) => {
 
                     // Examine the text in the response
                     response.json().then(function(data) {
-                        document.cookie = `cryptalyzer-coinbase-token=${data.access_token}`;
-                        document.cookie = `cryptalyzer-coinbase-refresh-token=${data.refresh_token}`;
+                        setCookie('cryptalyzer-coinbase-token', data.access_token);
+                        setCookie('cryptalyzer-coinbase-refresh-token', data.refresh_token);
                     });
                     }
                 )

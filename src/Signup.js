@@ -62,7 +62,7 @@ const Signup = (props) => {
               <Card variant="outlined" id="login-card">
                 <CardContent>
                   <h1>Cryptalyzer &#128640;</h1>
-                  <h2>maximize your moves</h2>
+                  <h2 className="green-text">maximize your moves</h2>
                   {/**<p>step: {step}</p> */}
                 </CardContent>
                 <CardActions id="funnel-menu" style={{ justifyContent: "center" }}>
