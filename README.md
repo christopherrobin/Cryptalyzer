@@ -1,5 +1,4 @@
-#Cryptalyzer
-
+# Cryptalyzer
 
 Cryptalyzer is an app that allows for deep analysis of your cryptocurrency trades. The first integration
 is authentication through Coinbase which allows you to organize, filter, and identify patterns or
