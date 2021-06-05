@@ -4,9 +4,7 @@ import {Helmet} from 'react-helmet';
 import { get } from 'lodash';
 import { Container } from "reactstrap";
 import Signup from './Signup';
-// import CoinbaseAuth from './CoinbaseAuth';
-// import Spinner from './components/Spinner';
-// import Menu from "./components/menu2";
+import Dashboard from './Dashboard';
 
 import "./App.scss";
 import './components/Fade.scss';
@@ -29,6 +27,10 @@ const App = () => {
 
             <Route path="/hello">
               <Signup coinbaseCode={coinbaseCode || false} />
+            </Route>
+
+            <Route path="/dashboard">
+              <Dashboard />
             </Route>
           </Switch>
         </Router>
