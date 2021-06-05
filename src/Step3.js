@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "reactstrap";
+import { get } from 'lodash';
 import { getCookie } from "./CookieWork";
+import { nukeUserCookies } from "./FetchWork";
+import Alert from '@material-ui/lab/Alert';
+import Button from '@material-ui/core/Button';
 // import { refreshToken } from "./FetchWork";
 
 import Fade from "./components/Fade";
@@ -38,7 +42,6 @@ const Step3 = props => {
 
         // Examine the text in the response
         response.json().then(function (data) {
-          console.log(data);
           setData(data.data);
         });
       })
@@ -51,25 +54,27 @@ const Step3 = props => {
     <div id="user-signup-form">
       <Row>
         <Col xs={12}>
-          {data.name ? (
+          {
+            get(data, 'name', false) ? (
             <Fade
               childComponent={
                 <div style={{ textAlign: "center" }}>
-                <div>
+                <div style={{ marginBottom: '1em' }}>
                   <img
                     src={data.avatar_url}
                     alt="avatar"
                     style={{ border: "1px solid black" }}
                   />
                   </div>
-                  <p>Welcome, {data.name}!</p>
+                  <h3>Welcome, {data.name}!</h3>
                   <p>
                     Your user id is <code>{data.id}</code>
                   </p>
                 </div>
               }
             />
-          ) : null}
+          ) : <div><Alert style={{ marginBottom: '1em' }} severity="error">There was an error retrieving your Coinbase user Information.</Alert><Button variant="contained" color="primary" disableElevation fullWidth onClick={() => nukeUserCookies()}>authorize Coinbase again</Button></div>
+          }
         </Col>
       </Row>
     </div>

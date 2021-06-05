@@ -11,5 +11,5 @@ export const getCookie = (name) => {
 }
 
 export const deleteCookie = (name, path) => {
-  setCookie(name, '', -1, path)
+  setCookie(name, '', -1, path);
 }

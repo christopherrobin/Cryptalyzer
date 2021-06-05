@@ -7,5 +7,6 @@
 */
 export const ENV_CONFIG = {
   // Coinbase API Secret
-  coinbaseSecret: 'f6d6e442eea4960d0b236644ac474d0e9e7cecc3d984b31268eca1ba9696b027'
+  coinbaseSecret: 'f6d6e442eea4960d0b236644ac474d0e9e7cecc3d984b31268eca1ba9696b027',
+  coinbaseClientId: 'b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1'
 }

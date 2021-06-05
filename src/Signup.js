@@ -4,6 +4,7 @@ import CoinbaseAuth from './CoinbaseAuth';
 import Step3 from './Step3';
 import { getCookie } from './CookieWork';
 
+// Material-UI components
 import { Card } from '@material-ui/core';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,12 +12,11 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
+// Styling and media
 import Bitcoin from './media/bitcoin.svg';
 import Eth from './media/eth.svg';
-
 import Fade from "./components/Fade";
 import './components/Fade.scss';
-
 import './Signup.scss';
 
 const Signup = (props) => {
@@ -40,15 +40,9 @@ const Signup = (props) => {
   const [email, setEmail] = useState('');
 
   const handleSubmit = (event) => {
-      // event.preventDefault();
-      // This will submit and create user account?
-      console.log(
-        `
-        ${firstName}
-        ${lastName}
-        ${email}
-        `
-      );
+      event.preventDefault();
+      // Eventually we may take this info and create a user account with it
+      console.log(`User Submitted: ${firstName} ${lastName}, ${email}`);
       setStep(step + 1);
   }
 
@@ -63,7 +57,6 @@ const Signup = (props) => {
                 <CardContent>
                   <h1>Cryptalyzer &#128640;</h1>
                   <h2 className="green-text">maximize your moves</h2>
-                  {/**<p>step: {step}</p> */}
                 </CardContent>
                 <CardActions id="funnel-menu" style={{ justifyContent: "center" }}>
                   <Button
@@ -72,16 +65,13 @@ const Signup = (props) => {
                     disabled={step !== 1}
                     className={step === 1 ? 'active-item' : null}
                   >
-                    Enter Details
+                    User Details
                   </Button>
                   <Button disableElevation size="large" disabled={step !== 2} className={step === 2 ? 'active-item' : null}>
                     Sync Coinbase
                   </Button>
                   <Button disableElevation size="large" disabled={step !== 3} className={step === 3 ? 'active-item' : null}>
-                    Cryptalize <sup>&#174;</sup>
-                  </Button>
-                  <Button disableElevation size="large" disabled={step !== 4} className={step === 4 ? 'active-item' : null}>
-                    Profit
+                    Confirm
                   </Button>
                 </CardActions>
 
@@ -143,7 +133,7 @@ const Signup = (props) => {
                 <Fade childComponent={
                   <CoinbaseAuth
                     handleSubmit={handleSubmit}
-                    coinbaseCode={coinbaseCode || null}
+                    coinbaseCode={coinbaseCode || false}
                   />
                 } />
                 :null

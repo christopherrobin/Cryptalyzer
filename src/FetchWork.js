@@ -1,7 +1,7 @@
-import { setCookie, getCookie } from './CookieWork';
+import { setCookie, deleteCookie } from './CookieWork';
+import { ENV_CONFIG } from './env-variables';
 
 export const getToken = (x) => x;
-
 export const getUser = (x) => x;
 
 export const refreshToken = (x) => {
@@ -10,10 +10,8 @@ export const refreshToken = (x) => {
 
         var formdata = new FormData();
         formdata.append("grant_type", "refresh_token");
-        // formdata.append("code", coinbaseCode);
-        formdata.append("client_id", "b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1");
-        formdata.append("client_secret", "f6d6e442eea4960d0b236644ac474d0e9e7cecc3d984b31268eca1ba9696b027");
-        // formdata.append("redirect_uri", "https://www.cryptalyzer.com/hello");
+        formdata.append("client_id", ENV_CONFIG.coinbaseClientId);
+        formdata.append("client_secret", ENV_CONFIG.coinbaseSecret);
         formdata.append("enablePKCE", "false");
         formdata.append("scopes", "[\"wallet:user:read\"]");
 
@@ -47,4 +45,10 @@ export const refreshToken = (x) => {
 
     console.log(`%c${x}`, 'background: #222; color: #bada55; padding: 1em; width: 100%;');
     return `Return: ${x}`;
+}
+
+export const nukeUserCookies = () => {
+    deleteCookie('cryptalyzer-coinbase-refresh-token');
+    deleteCookie('cryptalyzer-coinbase-token');
+    window.location.reload(false);
 }
