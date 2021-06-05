@@ -10,10 +10,10 @@ const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
     const userHasCoinbaseCookie = document.cookie.match(/^(.*;)?\s*cryptalyzer-coinbase-refresh-token\s*=\s*[^;]+(.*)?$/);
 
     useEffect((coinbaseCode) => {
-        const myHeaders = new Headers();
+        var myHeaders = new Headers();
         myHeaders.append("Cookie", "__cf_bm=129606ad9687effb18287759964a9262e3e22da3-1621714317-1800-AUImc3ODIsnDvoEDgRsJhOcSwHg7zjPLn+hDySV48raVjzFJlFZssuF4iWPvTsbNUAhSr7n/mEySfz+VGOOpQJU=; amplitude_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6; coinbase_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6");
 
-        const formdata = new FormData();
+        var formdata = new FormData();
         formdata.append("grant_type", "authorization_code");
         formdata.append("code", coinbaseCode);
         formdata.append("client_id", ENV_CONFIG.coinbaseClientId);
@@ -22,7 +22,7 @@ const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
         formdata.append("enablePKCE", "false");
         formdata.append("scopes", "[\"wallet:user:read\"]");
 
-        const requestOptions = {
+        var requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: formdata,
