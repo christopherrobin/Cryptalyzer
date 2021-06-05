@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { ENV_CONFIG } from './env-variables';
 import { Row, Col } from "reactstrap";
 import { setCookie } from './CookieWork';
 import Button from '@material-ui/core/Button';
@@ -20,7 +21,7 @@ const CoinbaseAuth = (props) => {
         formdata.append("grant_type", "authorization_code");
         formdata.append("code", coinbaseCode);
         formdata.append("client_id", "b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1");
-        formdata.append("client_secret", "f6d6e442eea4960d0b236644ac474d0e9e7cecc3d984b31268eca1ba9696b027");
+        formdata.append("client_secret", ENV_CONFIG.coinbaseSecret);
         formdata.append("redirect_uri", "https://www.cryptalyzer.com/hello");
         formdata.append("enablePKCE", "false");
         formdata.append("scopes", "[\"wallet:user:read\"]");
