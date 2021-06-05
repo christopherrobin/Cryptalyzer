@@ -143,7 +143,7 @@ const Signup = (props) => {
                 <Fade childComponent={
                   <CoinbaseAuth
                     handleSubmit={handleSubmit}
-                    coinbaseCode={coinbaseCode}
+                    coinbaseCode={coinbaseCode || null}
                   />
                 } />
                 :null
@@ -151,12 +151,8 @@ const Signup = (props) => {
 
 
                 {
-                  step === 3 ?
-                 <Fade childComponent={<Step3 />} /> : null
+                  step === 3 ? <Fade childComponent={<Step3 />} /> : null
                 }
-
-
-
 
                 <hr />
                 <div
