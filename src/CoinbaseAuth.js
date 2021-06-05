@@ -10,7 +10,6 @@ const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
     const userHasCoinbaseCookie = document.cookie.match(/^(.*;)?\s*cryptalyzer-coinbase-refresh-token\s*=\s*[^;]+(.*)?$/);
 
     useEffect(() => {
-        const { coinbaseCode } = this.props;
         var myHeaders = new Headers();
         myHeaders.append("Cookie", "__cf_bm=129606ad9687effb18287759964a9262e3e22da3-1621714317-1800-AUImc3ODIsnDvoEDgRsJhOcSwHg7zjPLn+hDySV48raVjzFJlFZssuF4iWPvTsbNUAhSr7n/mEySfz+VGOOpQJU=; amplitude_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6; coinbase_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6");
 
