@@ -1,0 +1,11 @@
+@import '../src/variables.scss';
+
+#Dashboard-Container {
+    h1 {
+        margin-top: 1em;
+    }
+
+    h2 {
+        color: $green;
+    }
+}
