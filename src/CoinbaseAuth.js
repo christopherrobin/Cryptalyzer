@@ -4,6 +4,7 @@ import { Row, Col } from "reactstrap";
 import { setCookie } from './CookieWork';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
     const connectToCoinbase = () => window.location.replace('https://www.coinbase.com/oauth/authorize?client_id=b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1&redirect_uri=https%3A%2F%2Fwww.cryptalyzer.com%2Fhello&response_type=code&scope=wallet%3Auser%3Aread');
@@ -60,6 +61,19 @@ const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
                 { userHasCoinbaseCookie ? <Alert severity="success">You're connected with Coinbase and ready to go!</Alert> : null }
                 <Button disabled={userHasCoinbaseCookie} style={{ margin: '2em 0' }} fullWidth color="primary" disableElevation variant="contained" onClick={() => connectToCoinbase()}>
                  Connect to Coinbase
+                </Button>
+            </Col>
+            <Col xs={12} style={{ textAlign: 'right' }}>
+                <Button
+                    // type="submit"
+                    onClick={() => handleSubmit()}
+                    variant="contained"
+                    color="primary"
+                    id="confirm-step2"
+                    disabled={!userHasCoinbaseCookie}
+                    disableElevation
+                >
+                    <strong>Next</strong> <NavigateNextIcon />
                 </Button>
             </Col>
         </Row>
