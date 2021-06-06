@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import {Helmet} from 'react-helmet';
 import { get } from 'lodash';
-import { Container } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import Header from './components/PageHeader';
 import Footer from './components/Footer';
 import Signup from './Signup';
@@ -23,7 +23,10 @@ const App = () => {
   return (
     <Container id="app-container">
       <Helmet>
+      <title>Cryptalyzer - Hello!</title>
         <style>{"body { background-color: #F3F3F3; }"}</style>
+        <link rel="canonical" href="https://Cryptalyzer.com/hello" />
+        <meta name="description" content="Cryptalyzer" />
       </Helmet>
       <div className="App">
         <Router>
@@ -45,9 +48,21 @@ const App = () => {
 
             <Route path="/sync">
               <Header pageTitle="Sync" />
-              <CoinbaseAuth
-                handleSubmit={()=>handleSubmit}
-              />
+              <Container>
+              <Row>
+                <Col xs={12}>
+                  <Helmet>
+                      <title>Cryptalyzer - Sync</title>
+                      <link rel="canonical" href="https://Cryptalyzer.com/sync" />
+                      <meta name="description" content="Sync With Coinbase" />
+                  </Helmet>
+                  <CoinbaseAuth
+                    handleSubmit={()=>handleSubmit}
+                  />
+                  </Col>
+                </Row>
+                <Footer />
+              </Container>
               <Footer />
             </Route>
           </Switch>

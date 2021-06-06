@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { get } from 'lodash';
+import {Helmet} from 'react-helmet';
 import { Container, Row, Col } from "reactstrap";
 import { getBasicUser } from './FetchWork';
 import Header from './components/PageHeader';
@@ -12,7 +13,6 @@ import './Dashboard.scss';
 import Alert from '@material-ui/lab/Alert';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
@@ -37,6 +37,11 @@ const Dashboard = () => {
 
     return(
         <Container id="Dashboard-Container">
+            <Helmet>
+                <title>Cryptalyzer - Dashboard</title>
+                <link rel="canonical" href="https://Cryptalyzer.com/dashboard" />
+                <meta name="description" content="Cryptalyzer User Dashboard" />
+            </Helmet>
             <Header pageTitle="Dashboard"/>
             <Row>
                 <Col xs={12}>
