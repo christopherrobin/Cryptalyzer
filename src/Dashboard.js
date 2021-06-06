@@ -20,11 +20,13 @@ import Typography from '@material-ui/core/Typography';
 
 const Dashboard = () => {
     const [basicUserResponse, setBasicUserResponse] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getBasicUser()
             .then(function(result) {
                 setBasicUserResponse(result);
+                setLoading(false);
             })
     }, [])
 
@@ -38,7 +40,7 @@ const Dashboard = () => {
             <Row>
                 <Col xs={12}>
                     {
-                        data && !basicUserResponseError ?
+                        data && !basicUserResponseError && !loading ?
                             <Row>
                                 <Col xs={12} md={9}>
                                     <Card>
@@ -96,7 +98,10 @@ const Dashboard = () => {
                                     </Card>
                                 </Col>
                             </Row>
-                            :
+                            : null
+                    }
+                    {
+                        basicUserResponseError && !loading ?
                             <div>
                                 <Alert style={{ marginBottom: '1em' }} severity="error">
                                     <p>There was an error retrieving your Coinbase user Information.</p>
@@ -105,7 +110,7 @@ const Dashboard = () => {
                                 <Button disableElevation variant="contained" color="primary" style={{ margin: '1em 0' }}>
                                     <Link to="/sync">Sync With Coinbase Again</Link>
                                 </Button>
-                            </div>
+                            </div> : null
                     }
                 </Col>
             </Row>

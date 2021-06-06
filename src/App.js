@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
 import CoinbaseAuth from './CoinbaseAuth';
+import Fade from "./components/Fade";
 
 import "./App.scss";
 import './components/Fade.scss';
@@ -36,7 +37,9 @@ const App = () => {
             </Route>
 
             <Route path="/dashboard">
-              <Dashboard />
+              <Fade
+                childComponent={<Dashboard />}
+              />
             </Route>
 
             <Route path="/sync">
