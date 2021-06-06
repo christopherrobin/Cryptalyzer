@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import {Helmet} from 'react-helmet';
 import { get } from 'lodash';
 import { Container } from "reactstrap";
+import Header from './components/PageHeader';
 import Footer from './components/Footer';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
@@ -39,6 +40,7 @@ const App = () => {
             </Route>
 
             <Route path="/sync">
+              <Header pageTitle="Sync" />
               <CoinbaseAuth
                 handleSubmit={()=>handleSubmit}
                 coinbaseCode='12345'

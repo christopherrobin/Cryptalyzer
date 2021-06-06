@@ -34,11 +34,11 @@ export const getBasicUser = () => {
           }
 
           // Examine the text in the response
-          const dataToReturn = response.json().then(function (data) {
-            return data.data
+          const returnedResponse = response.json().then(function (data) {
+            return data
           });
 
-          return dataToReturn
+          return returnedResponse
       })
     )
       .catch(function (err) {

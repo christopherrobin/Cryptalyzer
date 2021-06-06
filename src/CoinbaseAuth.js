@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation } from 'react-router-dom'
 import { ENV_CONFIG } from './env-variables';
 import { Row, Col } from "reactstrap";
 import { setCookie } from './CookieWork';
@@ -63,19 +64,22 @@ const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
                  Connect to Coinbase
                 </Button>
             </Col>
-            <Col xs={12} style={{ textAlign: 'right' }}>
-                <Button
-                    type="button"
-                    onClick={() => handleSubmit()}
-                    variant="contained"
-                    color="primary"
-                    id="confirm-step2"
-                    disabled={!userHasCoinbaseCookie}
-                    disableElevation
-                >
-                    <strong>Next</strong> <NavigateNextIcon />
-                </Button>
-            </Col>
+            {
+                useLocation().pathname === '/hello' ?
+                    <Col xs={12} style={{ textAlign: 'right' }}>
+                        <Button
+                            type="button"
+                            onClick={() => handleSubmit()}
+                            variant="contained"
+                            color="primary"
+                            id="confirm-step2"
+                            disabled={!userHasCoinbaseCookie}
+                            disableElevation
+                        >
+                            <strong>Next</strong> <NavigateNextIcon />
+                        </Button>
+                    </Col> : null
+            }
         </Row>
     </div>
   );
