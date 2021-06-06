@@ -8,7 +8,7 @@ import Alert from '@material-ui/lab/Alert';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
-    const connectToCoinbase = () => window.location.replace('https://www.coinbase.com/oauth/authorize?**account=all**client_id=b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1&redirect_uri=https%3A%2F%2Fwww.cryptalyzer.com%2Fhello&response_type=code&scope=wallet%3Auser%3Aread,wallet%3Aaccounts%3Aread');
+    const connectToCoinbase = () => window.location.replace('https://www.coinbase.com/oauth/authorize?client_id=b15a8f09ba059b65e41be40e61f0fa4ccf64d965538d886e11d0946eb59a17d1&redirect_uri=https%3A%2F%2Fwww.cryptalyzer.com%2Fhello&response_type=code&scope=wallet%3Auser%3Aread,wallet%3Aaccounts%3Aread&account=all');
     const userHasCoinbaseCookie = document.cookie.match(/^(.*;)?\s*cryptalyzer-coinbase-refresh-token\s*=\s*[^;]+(.*)?$/);
 
     useEffect(() => {
