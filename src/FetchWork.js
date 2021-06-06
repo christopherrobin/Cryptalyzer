@@ -4,7 +4,7 @@ import { getCookie } from './CookieWork';
 
 export const getToken = (x) => x;
 
-export const getBasicUser = (x) => {
+export const getBasicUser = () => {
     const coinbaseToken = getCookie("cryptalyzer-coinbase-token");
     const authHeader = `Bearer ${coinbaseToken}`;
 
@@ -17,29 +17,30 @@ export const getBasicUser = (x) => {
       redirect: "follow"
     };
 
-    return fetch("https://api.coinbase.com/v2/user", requestOptions)
-      .then(function (response) {
-        if (response.status !== 200 && response.status !== 401) {
-          console.error(`Unknown resolvable issue encountered, status Code: ${response.status}`);
-          // setError(true);
-          return;
-        }
+    return (
+      fetch("https://api.coinbase.com/v2/user", requestOptions)
+        .then(function (response) {
+          if (response.status !== 200 && response.status !== 401) {
+            console.error(`Unknown resolvable issue encountered, status Code: ${response.status}`);
+            return;
+          }
 
-        if (response.status === 401) {
-          console.error("You have an invalid token from Coinbase.");
-          // setError(true);
-          // TODO: Refresh auth using the refresh token we got from CB in the original call
-          // const freshAuthToken = refreshToken();
-          // console.log(freshAuthToken);
-        }
+          if (response.status === 401) {
+            console.error("You have an invalid token from Coinbase.");
+            // setError(true);
+            // TODO: Refresh auth using the refresh token we got from CB in the original call
+            // const freshAuthToken = refreshToken();
+            // console.log(freshAuthToken);
+          }
 
-        // Examine the text in the response
-        response.json().then(function (data) {
-          // setData(data.data);
-          // setLoading(false);
-          return data.data
-        });
+          // Examine the text in the response
+          const dataToReturn = response.json().then(function (data) {
+            return data.data
+          });
+
+          return dataToReturn
       })
+    )
       .catch(function (err) {
         console.log("Fetch Error :-S", err);
       });
