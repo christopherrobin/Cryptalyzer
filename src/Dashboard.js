@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { get } from 'lodash';
+import { get, filter } from 'lodash';
 import {Helmet} from 'react-helmet';
 import { Container, Row, Col } from "reactstrap";
 import { getBasicUser, getUserAccounts } from './FetchWork';
@@ -20,18 +20,19 @@ import Typography from '@material-ui/core/Typography';
 
 const Dashboard = () => {
     const [basicUserResponse, setBasicUserResponse] = useState({});
+    const [accountsResponse, setAccountsResponse] = useState(false)
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getBasicUser()
-            .then(function(result) {
+            .then((result) => {
                 setBasicUserResponse(result);
-                setLoading(false);
             })
+
         
         getUserAccounts()
-            .then(function(result) {
-                console.log(result);
+            .then((result) => {
+                setAccountsResponse(result);
                 setLoading(false);
             })
     }, [])
@@ -39,9 +40,11 @@ const Dashboard = () => {
     const data = get(basicUserResponse, 'data', false);
     const basicUserResponseError = get(basicUserResponse, 'errors', false);
     const time = get(data, 'created_at', false);
-    //console.log(data);
 
-    return(
+    const accounts = get(accountsResponse, 'data', false);
+    const accountsWithBalances = filter(accounts, (x) => !x.balance.amount.startsWith('0.000'));
+
+    return (
         <Container id="Dashboard-Container">
             <Helmet>
                 <title>Cryptalyzer - Dashboard</title>

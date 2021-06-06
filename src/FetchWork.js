@@ -60,7 +60,7 @@ export const getUserAccounts = () => {
     };
 
     return (
-      fetch("https://api.coinbase.com/v2/accounts", requestOptions)
+      fetch("https://api.coinbase.com/v2/accounts?limit=100", requestOptions)
         .then(function (response) {
           if (response.status !== 200 && response.status !== 401) {
             console.error(`Unknown resolvable issue encountered, status Code: ${response.status}`);
