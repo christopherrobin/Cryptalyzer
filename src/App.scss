@@ -142,3 +142,13 @@ code {
   background-color: #eee;
   padding: .5em;
 }
+
+span.MuiButton-label a {
+  // We can't do this through the MUI theme due to using <a> inside of <Button>
+  color: white;
+  text-decoration: none;
+}
+
+#Step3-Container {
+  margin-top: 1em;
+}
