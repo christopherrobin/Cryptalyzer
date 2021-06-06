@@ -65,7 +65,7 @@ const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
             </Col>
             <Col xs={12} style={{ textAlign: 'right' }}>
                 <Button
-                    // type="submit"
+                    type="button"
                     onClick={() => handleSubmit()}
                     variant="contained"
                     color="primary"
