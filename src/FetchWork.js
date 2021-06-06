@@ -1,12 +1,53 @@
 import { setCookie, deleteCookie } from './CookieWork';
 import { ENV_CONFIG } from './env-variables';
+import { getCookie } from './CookieWork';
 
 export const getToken = (x) => x;
-export const getUser = (x) => x;
+
+export const getBasicUser = (x) => {
+    const coinbaseToken = getCookie("cryptalyzer-coinbase-token");
+    const authHeader = `Bearer ${coinbaseToken}`;
+
+    let myHeaders = new Headers();
+    myHeaders.append("Authorization", authHeader);
+    myHeaders.append("CB-VERSION", "2021-05-24");
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+
+    return fetch("https://api.coinbase.com/v2/user", requestOptions)
+      .then(function (response) {
+        if (response.status !== 200 && response.status !== 401) {
+          console.error(`Unknown resolvable issue encountered, status Code: ${response.status}`);
+          // setError(true);
+          return;
+        }
+
+        if (response.status === 401) {
+          console.error("You have an invalid token from Coinbase.");
+          // setError(true);
+          // TODO: Refresh auth using the refresh token we got from CB in the original call
+          // const freshAuthToken = refreshToken();
+          // console.log(freshAuthToken);
+        }
+
+        // Examine the text in the response
+        response.json().then(function (data) {
+          // setData(data.data);
+          // setLoading(false);
+          return data.data
+        });
+      })
+      .catch(function (err) {
+        console.log("Fetch Error :-S", err);
+      });
+};
 
 export const refreshToken = (x) => {
         var myHeaders = new Headers();
-        myHeaders.append("Cookie", "__cf_bm=129606ad9687effb18287759964a9262e3e22da3-1621714317-1800-AUImc3ODIsnDvoEDgRsJhOcSwHg7zjPLn+hDySV48raVjzFJlFZssuF4iWPvTsbNUAhSr7n/mEySfz+VGOOpQJU=; amplitude_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6; coinbase_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6");
+        // myHeaders.append("Cookie", "__cf_bm=129606ad9687effb18287759964a9262e3e22da3-1621714317-1800-AUImc3ODIsnDvoEDgRsJhOcSwHg7zjPLn+hDySV48raVjzFJlFZssuF4iWPvTsbNUAhSr7n/mEySfz+VGOOpQJU=; amplitude_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6; coinbase_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6");
 
         var formdata = new FormData();
         formdata.append("grant_type", "refresh_token");
