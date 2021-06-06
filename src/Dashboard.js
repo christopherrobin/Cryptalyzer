@@ -72,17 +72,15 @@ const Dashboard = () => {
                                         </Card>
                                     </Col>
                                     <Col xs={12} md={4}>
-                                        <Card variant="outlined" style={{ marginBottom: '2em' }}>
-                                            <CardActionArea>
-                                                <CardContent>
-                                                    <Typography gutterBottom variant="h5" component="h2">
-                                                        Side rail title
-                                                    </Typography>
-                                                    <Typography variant="body2" color="textSecondary" component="p">
-                                                        Side rail body
-                                                    </Typography>
-                                                </CardContent>
-                                            </CardActionArea>
+                                        <Card style={{ marginBottom: '2em' }}>
+                                            <CardContent>
+                                                <Typography gutterBottom variant="h5" component="h2">
+                                                    Welcome back!
+                                                </Typography>
+                                                <Typography variant="body2" color="textSecondary" component="p">
+                                                    <Link to="/sync">Sync With Coinbase</Link>
+                                                </Typography>
+                                            </CardContent>
                                         </Card>
                                     </Col>
                                 </Row>
