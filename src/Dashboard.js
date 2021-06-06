@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { get, filter } from 'lodash';
+import { get, filter, map } from 'lodash';
 import {Helmet} from 'react-helmet';
 import { Container, Row, Col } from "reactstrap";
 import { getBasicUser, getUserAccounts } from './FetchWork';
@@ -42,7 +42,8 @@ const Dashboard = () => {
     const time = get(data, 'created_at', false);
 
     const accounts = get(accountsResponse, 'data', false);
-    const accountsWithBalances = filter(accounts, (x) => !x.balance.amount.startsWith('0.000'));
+    const accountsWithBalances = filter(accounts, (x) => !x.balance.amount.startsWith('0.00'));
+    console.log(accountsWithBalances);
 
     return (
         <Container id="Dashboard-Container">
@@ -91,6 +92,28 @@ const Dashboard = () => {
                                                 </Typography>
                                             </CardContent>
                                         </Card>
+                                        <Card>
+                                            <CardContent>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                Accounts
+                                            </Typography>
+                                                {
+                                                    map(accountsWithBalances, (account) => {
+                                                        return (
+                                                            <div>
+                                                                <strong>{account.currency.name}: </strong> 
+                                                                {account.balance.amount} {account.balance.currency}
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </CardContent>
+                                        </Card>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={12}>
+
                                     </Col>
                                 </Row>
                                 <Row>
