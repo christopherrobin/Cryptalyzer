@@ -47,62 +47,67 @@ const Dashboard = () => {
                 <Col xs={12}>
                     {
                         data && !basicUserResponseError && !loading ?
-                            <Row>
-                                <Col xs={12} md={8}>
-                                    <Card style={{ marginBottom: '2em' }}>
-                                        <CardActionArea>
-                                            <CardMedia
-                                            component="img"
-                                            alt="User Profile Picture"
-                                            height="140"
-                                            image={data.avatar_url}
-                                            title="User Profile Picture"
-                                            style={{ height: '15em' }}
-                                            />
-                                            <CardContent>
-                                            <Typography gutterBottom variant="h5" component="h2">
-                                                {data.name}
-                                            </Typography>
-                                            <div>
-                                                <p>User Since {format(new Date(time), 'eeee, MMMM do yyyy, h:mm:ss aa')}</p>
-                                            </div>
-                                            </CardContent>
-                                        </CardActionArea>
-                                    </Card>
-
-                                    <div style={{ marginBottom: '3em' }}>
-                                        <h3 style={{ marginBottom: '0.5em' }}>User Details</h3>
-                                        <StripedTable
-                                            dataToMap={[
-                                                { key: "Avatar URL", value: data.avatar_url },
-                                                { key: "User ID", value: data.id },
-                                                { key: "Legacy ID", value: get(data, 'legacy_id', false) },
-                                                { key: "User Since", value: format(new Date(time), 'eeee, MMMM do yyyy, h:mm:ss aa')},
-                                                { key: "Country", value: get(data, 'country.name', false) },
-                                                { key: "State", value: data.state },
-                                                { key: "Currency", value: data.native_currency },
-                                                { key: "Time Zone", value: data.time_zone },
-                                                { key: "User Type", value: data.user_type },
-                                                { key: "Tier", value: get(data, 'tiers.completed_description', false) },
-                                            ]}
-                                        />
-                                    </div>
-                                </Col>
-                                <Col xs={12} md={4}>
-                                    <Card variant="outlined" style={{ marginBottom: '2em' }}>
-                                        <CardActionArea>
-                                            <CardContent>
+                            <div>
+                                <Row>
+                                    <Col xs={12} md={8}>
+                                        <Card style={{ marginBottom: '2em' }}>
+                                            <CardActionArea>
+                                                <CardMedia
+                                                component="img"
+                                                alt="User Profile Picture"
+                                                height="140"
+                                                image={data.avatar_url}
+                                                title="User Profile Picture"
+                                                style={{ height: '15em' }}
+                                                />
+                                                <CardContent>
                                                 <Typography gutterBottom variant="h5" component="h2">
-                                                    Side rail title
+                                                    {data.name}
                                                 </Typography>
-                                                <Typography variant="body2" color="textSecondary" component="p">
-                                                    Side rail body
-                                                </Typography>
-                                            </CardContent>
-                                        </CardActionArea>
-                                    </Card>
-                                </Col>
-                            </Row>
+                                                <div>
+                                                    <p>User Since {format(new Date(time), 'eeee, MMMM do yyyy, h:mm:ss aa')}</p>
+                                                </div>
+                                                </CardContent>
+                                            </CardActionArea>
+                                        </Card>
+                                    </Col>
+                                    <Col xs={12} md={4}>
+                                        <Card variant="outlined" style={{ marginBottom: '2em' }}>
+                                            <CardActionArea>
+                                                <CardContent>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        Side rail title
+                                                    </Typography>
+                                                    <Typography variant="body2" color="textSecondary" component="p">
+                                                        Side rail body
+                                                    </Typography>
+                                                </CardContent>
+                                            </CardActionArea>
+                                        </Card>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={12}>
+                                        <div style={{ marginBottom: '3em' }}>
+                                            <h3 style={{ marginBottom: '0.5em' }}>User Details</h3>
+                                            <StripedTable
+                                                dataToMap={[
+                                                    { key: "Avatar URL", value: data.avatar_url },
+                                                    { key: "User ID", value: data.id },
+                                                    { key: "Legacy ID", value: get(data, 'legacy_id', false) },
+                                                    { key: "User Since", value: format(new Date(time), 'eeee, MMMM do yyyy, h:mm:ss aa')},
+                                                    { key: "Country", value: get(data, 'country.name', false) },
+                                                    { key: "State", value: data.state },
+                                                    { key: "Currency", value: data.native_currency },
+                                                    { key: "Time Zone", value: data.time_zone },
+                                                    { key: "User Type", value: data.user_type },
+                                                    { key: "Tier", value: get(data, 'tiers.completed_description', false) },
+                                                ]}
+                                            />
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </div>
                             : null
                     }
                     {

@@ -1,8 +1,10 @@
 @import '../src/variables.scss';
 
 #Dashboard-Container {
+    width: 100%;
+
     .truncate {
-        width: 22em;
+        width: 80%;
         overflow: auto;
       }
 }
