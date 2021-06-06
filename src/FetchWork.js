@@ -2,8 +2,6 @@ import { setCookie, deleteCookie } from './CookieWork';
 import { ENV_CONFIG } from './env-variables';
 import { getCookie } from './CookieWork';
 
-export const getToken = (x) => x;
-
 export const getBasicUser = () => {
     const coinbaseToken = getCookie("cryptalyzer-coinbase-token");
     const authHeader = `Bearer ${coinbaseToken}`;
@@ -11,14 +9,58 @@ export const getBasicUser = () => {
     let myHeaders = new Headers();
     myHeaders.append("Authorization", authHeader);
     myHeaders.append("CB-VERSION", "2021-05-24");
+
     var requestOptions = {
       method: "GET",
       headers: myHeaders,
-      redirect: "follow"
+      redirect: "follow",
     };
 
     return (
       fetch("https://api.coinbase.com/v2/user", requestOptions)
+        .then(function (response) {
+          if (response.status !== 200 && response.status !== 401) {
+            console.error(`Unknown resolvable issue encountered, status Code: ${response.status}`);
+            return;
+          }
+
+          if (response.status === 401) {
+            console.error("You have an invalid token from Coinbase.");
+            // setError(true);
+            // TODO: Refresh auth using the refresh token we got from CB in the original call
+            // const freshAuthToken = refreshToken();
+            // console.log(freshAuthToken);
+          }
+
+          // Examine the text in the response
+          const returnedResponse = response.json().then(function (data) {
+            return data
+          });
+
+          return returnedResponse
+      })
+    )
+      .catch(function (err) {
+        console.log("Fetch Error :-S", err);
+      });
+};
+
+export const getUserAccounts = () => {
+    const coinbaseToken = getCookie("cryptalyzer-coinbase-token");
+    const authHeader = `Bearer ${coinbaseToken}`;
+
+    let myHeaders = new Headers();
+    myHeaders.append("Authorization", authHeader);
+    myHeaders.append("CB-VERSION", "2021-05-24");
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    return (
+      fetch("https://api.coinbase.com/v2/accounts&scope=wallet:accounts:read", requestOptions)
         .then(function (response) {
           if (response.status !== 200 && response.status !== 401) {
             console.error(`Unknown resolvable issue encountered, status Code: ${response.status}`);
@@ -94,3 +136,5 @@ export const nukeUserCookies = () => {
     deleteCookie('cryptalyzer-coinbase-token');
     window.location.reload(false);
 }
+
+export const getToken = (x) => x;

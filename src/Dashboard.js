@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { get } from 'lodash';
 import {Helmet} from 'react-helmet';
 import { Container, Row, Col } from "reactstrap";
-import { getBasicUser } from './FetchWork';
+import { getBasicUser, getUserAccounts } from './FetchWork';
 import Header from './components/PageHeader';
 import StripedTable from './components/StripedTable';
 import format from 'date-fns/format';
@@ -28,12 +28,18 @@ const Dashboard = () => {
                 setBasicUserResponse(result);
                 setLoading(false);
             })
+        
+        getUserAccounts()
+            .then(function(result) {
+                console.log(result);
+                setLoading(false);
+            })
     }, [])
 
     const data = get(basicUserResponse, 'data', false);
     const basicUserResponseError = get(basicUserResponse, 'errors', false);
     const time = get(data, 'created_at', false);
-    console.log(data);
+    //console.log(data);
 
     return(
         <Container id="Dashboard-Container">
