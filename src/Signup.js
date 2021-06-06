@@ -40,7 +40,7 @@ const Signup = (props) => {
   const [email, setEmail] = useState('');
 
   const handleSubmit = (event) => {
-      event.preventDefault();
+      // event.preventDefault();
       // Eventually we may take this info and create a user account with it
       if (firstName && lastName) {console.log(`User Submitted: ${firstName} ${lastName}, ${email}`)};
       setStep(step + 1);
