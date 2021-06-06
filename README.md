@@ -1,3 +1,5 @@
+<img width="867" alt="screenshot" src="https://user-images.githubusercontent.com/464211/120917778-19be9a00-c67f-11eb-934c-8bcd0aa4e2f2.png">
+
 # Cryptalyzer
 
 Cryptalyzer is an app that allows for deep analysis of your cryptocurrency trades. The first integration
