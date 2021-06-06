@@ -34,6 +34,7 @@ const App = () => {
 
             <Route path="/hello">
               <Signup coinbaseCode={coinbaseCode || false} />
+              <Footer />
             </Route>
 
             <Route path="/dashboard">
@@ -46,13 +47,11 @@ const App = () => {
               <Header pageTitle="Sync" />
               <CoinbaseAuth
                 handleSubmit={()=>handleSubmit}
-                coinbaseCode='12345'
               />
+              <Footer />
             </Route>
           </Switch>
         </Router>
-
-      <Footer />
 
       </div>
     </Container>

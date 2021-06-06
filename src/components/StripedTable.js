@@ -5,7 +5,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import Card from '@material-ui/core/Card';
 
 const StripedTable = ({dataToMap}) => {
@@ -16,7 +15,7 @@ const StripedTable = ({dataToMap}) => {
         <TableHead>
           <TableRow>
             <TableCell>Key</TableCell>
-            <TableCell align="right">Value</TableCell>
+            <TableCell>Value</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

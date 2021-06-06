@@ -33,6 +33,7 @@ const Dashboard = () => {
     const data = get(basicUserResponse, 'data', false);
     const basicUserResponseError = get(basicUserResponse, 'errors', false);
     const time = get(data, 'created_at', false);
+    console.log(data);
 
     return(
         <Container id="Dashboard-Container">
@@ -42,8 +43,8 @@ const Dashboard = () => {
                     {
                         data && !basicUserResponseError && !loading ?
                             <Row>
-                                <Col xs={12} md={9}>
-                                    <Card>
+                                <Col xs={12} md={8}>
+                                    <Card style={{ marginBottom: '2em' }}>
                                         <CardActionArea>
                                             <CardMedia
                                             component="img"
@@ -62,36 +63,35 @@ const Dashboard = () => {
                                             </div>
                                             </CardContent>
                                         </CardActionArea>
-                                        <CardActions>
-                                            <Button size="small" color="primary">
-                                            Share
-                                            </Button>
-                                            <Button size="small" color="primary">
-                                            Learn More
-                                            </Button>
-                                        </CardActions>
                                     </Card>
 
-                                    <div style={{ marginTop: '1em' }}>
-                                    <StripedTable
-                                        dataToMap={[
-                                            { key: "Avatar URL", value: data.avatar_url },
-                                            { key: "User ID", value: data.id },
-                                            { key: "User Since", value: format(new Date(time), 'eeee, MMMM do yyyy, h:mm:ss aa')},
-                                            { key: "Country", value: get(data, 'country.name', false) },
-                                        ]}
-                                    />
+                                    <div style={{ marginBottom: '3em' }}>
+                                        <h3 style={{ marginBottom: '0.5em' }}>User Details</h3>
+                                        <StripedTable
+                                            dataToMap={[
+                                                { key: "Avatar URL", value: data.avatar_url },
+                                                { key: "User ID", value: data.id },
+                                                { key: "Legacy ID", value: get(data, 'legacy_id', false) },
+                                                { key: "User Since", value: format(new Date(time), 'eeee, MMMM do yyyy, h:mm:ss aa')},
+                                                { key: "Country", value: get(data, 'country.name', false) },
+                                                { key: "State", value: data.state },
+                                                { key: "Currency", value: data.native_currency },
+                                                { key: "Time Zone", value: data.time_zone },
+                                                { key: "User Type", value: data.user_type },
+                                                { key: "Tier", value: get(data, 'tiers.completed_description', false) },
+                                            ]}
+                                        />
                                     </div>
                                 </Col>
-                                <Col xs={12} md={3}>
-                                    <Card variant="outlined">
+                                <Col xs={12} md={4}>
+                                    <Card variant="outlined" style={{ marginBottom: '2em' }}>
                                         <CardActionArea>
                                             <CardContent>
                                                 <Typography gutterBottom variant="h5" component="h2">
-                                                    Christopher Reynolds
+                                                    Side rail title
                                                 </Typography>
                                                 <Typography variant="body2" color="textSecondary" component="p">
-                                                    Information here
+                                                    Side rail body
                                                 </Typography>
                                             </CardContent>
                                         </CardActionArea>
