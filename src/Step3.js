@@ -76,9 +76,7 @@ const Step3 = props => {
                     <p>
                       Your user id is <code>{data.id}</code>
                     </p>
-                    <Button disableElevation variant="contained" color="primary" style={{ margin: '1em 0' }}>
-                      <Link to="/dashboard">Continue to your dashboard</Link>
-                    </Button>
+                    <Link to="/dashboard">Continue to your dashboard</Link>
                   </div>
                 }
               />
