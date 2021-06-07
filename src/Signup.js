@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Container, Row, Col } from "reactstrap";
+import React, { useState } from 'react';
+import { Container, Row, Col } from 'reactstrap';
 import CoinbaseAuth from './CoinbaseAuth';
 import Step3 from './Step3';
 import { getCookie } from './CookieWork';
@@ -15,7 +15,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 // Styling and media
 import Bitcoin from './media/bitcoin.svg';
 import Eth from './media/eth.svg';
-import Fade from "./components/Fade";
+import Fade from './components/Fade';
 import './components/Fade.scss';
 import './Signup.scss';
 
@@ -32,7 +32,7 @@ const Signup = (props) => {
       result = 3;
     }
     return result;
-  }
+  };
 
   const [step, setStep] = useState(intialStep);
   const [firstName, setFirstName] = useState('');
@@ -42,9 +42,9 @@ const Signup = (props) => {
   const handleSubmit = (event) => {
       // event.preventDefault();
       // Eventually we may take this info and create a user account with it
-      if (firstName && lastName) {console.log(`User Submitted: ${firstName} ${lastName}, ${email}`)};
+      if (firstName && lastName) {console.log(`User Submitted: ${firstName} ${lastName}, ${email}`);};
       setStep(step + 1);
-  }
+  };
 
   return (
   <Container>
@@ -58,7 +58,7 @@ const Signup = (props) => {
                   <h1>Cryptalyzer &#128640;</h1>
                   <h2 className="green-text">maximize your moves</h2>
                 </CardContent>
-                <CardActions id="funnel-menu" style={{ justifyContent: "center" }}>
+                <CardActions id="funnel-menu" style={{ justifyContent: 'center' }}>
                   <Button
                     size="large"
                     disableElevation
@@ -111,7 +111,7 @@ const Signup = (props) => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col xs={12} style={{ textAlign: "right" }}>
+                    <Col xs={12} style={{ textAlign: 'right' }}>
                       <Button
                         type="submit"
                         variant="contained"
@@ -147,20 +147,20 @@ const Signup = (props) => {
                 <hr />
                 <div
                   style={{
-                    width: "9em",
-                    textAlign: "center",
-                    margin: "auto"
+                    width: '9em',
+                    textAlign: 'center',
+                    margin: 'auto'
                   }}
                 >
                   <div>
                     <img
                       src={Eth}
-                      style={{ width: "3em", height: "3em" }}
+                      style={{ width: '3em', height: '3em' }}
                       alt="Etehreum Accepted Here"
                     />
                     <img
                       src={Bitcoin}
-                      style={{ width: "3em", height: "3em" }}
+                      style={{ width: '3em', height: '3em' }}
                       alt="Bitcoin Accepted Here"
                     />
                   </div>

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 // import { Container, Button, Alert } from "reactstrap";
-import { CSSTransition } from "react-transition-group";
+import { CSSTransition } from 'react-transition-group';
 import './Fade.scss';
 
 const Fade = (props) => {

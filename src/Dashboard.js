@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { get, filter, map } from 'lodash';
 import {Helmet} from 'react-helmet';
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col } from 'reactstrap';
 import { getBasicUser, getUserAccounts } from './FetchWork';
 import Header from './components/PageHeader';
 import StripedTable from './components/StripedTable';
@@ -20,22 +20,22 @@ import Typography from '@material-ui/core/Typography';
 
 const Dashboard = () => {
     const [basicUserResponse, setBasicUserResponse] = useState({});
-    const [accountsResponse, setAccountsResponse] = useState(false)
+    const [accountsResponse, setAccountsResponse] = useState(false);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getBasicUser()
             .then((result) => {
                 setBasicUserResponse(result);
-            })
+            });
 
         
         getUserAccounts()
             .then((result) => {
                 setAccountsResponse(result);
                 setLoading(false);
-            })
-    }, [])
+            });
+    }, []);
 
     const data = get(basicUserResponse, 'data', false);
     const basicUserResponseError = get(basicUserResponse, 'errors', false);
@@ -92,7 +92,7 @@ const Dashboard = () => {
                                                 </Typography>
                                             </CardContent>
                                         </Card>
-                                        <Card>
+                                        <Card style={{ marginBottom: '2em' }}>
                                             <CardContent>
                                             <Typography gutterBottom variant="h5" component="h2">
                                                 Accounts
@@ -100,11 +100,11 @@ const Dashboard = () => {
                                                 {
                                                     map(accountsWithBalances, (account) => {
                                                         return (
-                                                            <div>
+                                                            <div key={account.currency.name}>
                                                                 <strong>{account.currency.name}: </strong> 
                                                                 {account.balance.amount} {account.balance.currency}
                                                             </div>
-                                                        )
+                                                        );
                                                     })
                                                 }
                                             </CardContent>
@@ -122,16 +122,16 @@ const Dashboard = () => {
                                             <h3 style={{ marginBottom: '0.5em' }}>User Details</h3>
                                             <StripedTable
                                                 dataToMap={[
-                                                    { key: "Avatar URL", value: data.avatar_url },
-                                                    { key: "User ID", value: data.id },
-                                                    { key: "Legacy ID", value: get(data, 'legacy_id', false) },
-                                                    { key: "User Since", value: format(new Date(time), 'eeee, MMMM do yyyy, h:mm:ss aa')},
-                                                    { key: "Country", value: get(data, 'country.name', false) },
-                                                    { key: "State", value: data.state },
-                                                    { key: "Currency", value: data.native_currency },
-                                                    { key: "Time Zone", value: data.time_zone },
-                                                    { key: "User Type", value: data.user_type },
-                                                    { key: "Tier", value: get(data, 'tiers.completed_description', false) },
+                                                    { key: 'Avatar URL', value: data.avatar_url },
+                                                    { key: 'User ID', value: data.id },
+                                                    { key: 'Legacy ID', value: get(data, 'legacy_id', false) },
+                                                    { key: 'User Since', value: format(new Date(time), 'eeee, MMMM do yyyy, h:mm:ss aa')},
+                                                    { key: 'Country', value: get(data, 'country.name', false) },
+                                                    { key: 'State', value: data.state },
+                                                    { key: 'Currency', value: data.native_currency },
+                                                    { key: 'Time Zone', value: data.time_zone },
+                                                    { key: 'User Type', value: data.user_type },
+                                                    { key: 'Tier', value: get(data, 'tiers.completed_description', false) },
                                                 ]}
                                             />
                                         </div>
@@ -155,7 +155,7 @@ const Dashboard = () => {
                 </Col>
             </Row>
         </Container>
-    )
+    );
 };
 
 export default Dashboard;

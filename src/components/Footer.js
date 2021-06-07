@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Footer = () => {
     return(
@@ -25,7 +25,7 @@ const Footer = () => {
           </svg>
           &nbsp;in Indianapolis
         </div>
-    )
+    );
 };
 
 export default Footer;

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { useLocation } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ENV_CONFIG } from './env-variables';
-import { Row, Col } from "reactstrap";
+import { Row, Col } from 'reactstrap';
 import { setCookie } from './CookieWork';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
@@ -13,16 +13,16 @@ const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
 
     useEffect(() => {
         var myHeaders = new Headers();
-        myHeaders.append("Cookie", "__cf_bm=129606ad9687effb18287759964a9262e3e22da3-1621714317-1800-AUImc3ODIsnDvoEDgRsJhOcSwHg7zjPLn+hDySV48raVjzFJlFZssuF4iWPvTsbNUAhSr7n/mEySfz+VGOOpQJU=; amplitude_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6; coinbase_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6");
+        myHeaders.append('Cookie', '__cf_bm=129606ad9687effb18287759964a9262e3e22da3-1621714317-1800-AUImc3ODIsnDvoEDgRsJhOcSwHg7zjPLn+hDySV48raVjzFJlFZssuF4iWPvTsbNUAhSr7n/mEySfz+VGOOpQJU=; amplitude_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6; coinbase_device_id=da721d2c-e2ae-4b60-8b9e-e9d4ea2adec6');
 
         var formdata = new FormData();
-        formdata.append("grant_type", "authorization_code");
-        formdata.append("code", coinbaseCode);
-        formdata.append("client_id", ENV_CONFIG.coinbaseClientId);
-        formdata.append("client_secret", ENV_CONFIG.coinbaseSecret);
-        formdata.append("redirect_uri", "https://www.cryptalyzer.com/hello");
-        formdata.append("enablePKCE", "false");
-        formdata.append("scopes", "[\"wallet:user:read\"]");
+        formdata.append('grant_type', 'authorization_code');
+        formdata.append('code', coinbaseCode);
+        formdata.append('client_id', ENV_CONFIG.coinbaseClientId);
+        formdata.append('client_secret', ENV_CONFIG.coinbaseSecret);
+        formdata.append('redirect_uri', 'https://www.cryptalyzer.com/hello');
+        formdata.append('enablePKCE', 'false');
+        formdata.append('scopes', '["wallet:user:read"]');
 
         var requestOptions = {
             method: 'POST',
@@ -32,7 +32,7 @@ const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
         };
 
         if (coinbaseCode) {
-            fetch("https://api.coinbase.com/oauth/token", requestOptions)
+            fetch('https://api.coinbase.com/oauth/token', requestOptions)
                 .then(
                     function(response) {
                     if (response.status !== 200) {
@@ -53,6 +53,7 @@ const CoinbaseAuth = ({handleSubmit, coinbaseCode}) => {
                 });
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
   return (

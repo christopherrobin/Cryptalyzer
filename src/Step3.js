@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col } from "reactstrap";
+import React, { useEffect, useState } from 'react';
+import { Row, Col } from 'reactstrap';
 import { get } from 'lodash';
-import { getCookie } from "./CookieWork";
-import { nukeUserCookies } from "./FetchWork";
+import { getCookie } from './CookieWork';
+import { nukeUserCookies } from './FetchWork';
 import { Link } from 'react-router-dom';
 import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 // import { refreshToken } from "./FetchWork";
 
-import Fade from "./components/Fade";
+import Fade from './components/Fade';
 
 const Step3 = props => {
   const [data, setData] = useState({});
@@ -16,19 +16,19 @@ const Step3 = props => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const coinbaseToken = getCookie("cryptalyzer-coinbase-token");
+    const coinbaseToken = getCookie('cryptalyzer-coinbase-token');
     const authHeader = `Bearer ${coinbaseToken}`;
 
     let myHeaders = new Headers();
-    myHeaders.append("Authorization", authHeader);
-    myHeaders.append("CB-VERSION", "2021-05-24");
+    myHeaders.append('Authorization', authHeader);
+    myHeaders.append('CB-VERSION', '2021-05-24');
     var requestOptions = {
-      method: "GET",
+      method: 'GET',
       headers: myHeaders,
-      redirect: "follow"
+      redirect: 'follow'
     };
 
-    fetch("https://api.coinbase.com/v2/user", requestOptions)
+    fetch('https://api.coinbase.com/v2/user', requestOptions)
       .then(function (response) {
         if (response.status !== 200 && response.status !== 401) {
           console.error(`Unknown resolvable issue encountered, status Code: ${response.status}`);
@@ -37,7 +37,7 @@ const Step3 = props => {
         }
 
         if (response.status === 401) {
-          console.error("You have an invalid token from Coinbase.");
+          console.error('You have an invalid token from Coinbase.');
           setError(true);
           // TODO: Refresh auth using the refresh token we got from CB in the original call
           // const freshAuthToken = refreshToken();
@@ -51,7 +51,7 @@ const Step3 = props => {
         });
       })
       .catch(function (err) {
-        console.log("Fetch Error :-S", err);
+        console.log('Fetch Error :-S', err);
       });
 
   }, []);
@@ -64,12 +64,12 @@ const Step3 = props => {
             (get(data, 'name', false) && !loading && !error) ? (
               <Fade
                 childComponent={
-                  <div style={{ textAlign: "center" }}>
+                  <div style={{ textAlign: 'center' }}>
                   <div style={{ marginBottom: '1em' }}>
                     <img
                       src={data.avatar_url}
                       alt="avatar"
-                      style={{ border: "1px solid black" }}
+                      style={{ border: '1px solid black' }}
                     />
                     </div>
                     <h3>Welcome, {data.name}!</h3>
